@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('user/{id}/{name}', function ($id, $name) {
-    //
-})->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+Route::get('user/{id?}', function ($id = null) {
+    return 'user' . $id;
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
