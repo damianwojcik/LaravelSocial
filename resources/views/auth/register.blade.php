@@ -10,15 +10,29 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                        <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
+                            <label for="firstName" class="col-md-4 control-label">First Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="firstName" type="text" class="form-control" name="firstName" value="{{ old('firstName') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('firstName'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('firstName') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
+                            <label for="lastName" class="col-md-4 control-label">Last Name</label>
+
+                            <div class="col-md-6">
+                                <input id="lastName" type="text" class="form-control" name="lastName" value="{{ old('lastName') }}" required autofocus>
+
+                                @if ($errors->has('lastName'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('lastName') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -39,13 +53,23 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="email-confirm" class="col-md-4 control-label">Confirm E-mail Address</label>
+
+                            <div class="col-md-6">
+                                <input id="email-confirm" type="email" class="form-control" name="email_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="sex" class="col-md-4 control-label">Płeć</label>
 
                             <div class="col-md-6">
-                                <select id="sex" type="text" class="form-control" name="sex">
-                                    <option value="male">Mężczyzna</option>
-                                    <option value="female">Kobieta</option>
-                                </select>
+                                <label class="radio-inline">
+                                    <input type="radio" name="sex" id="inlineRadio1" value="male" required>Male
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="sex" id="inlineRadio2" value="female" required>Female
+                                </label>
                             </div>
                         </div>
 
@@ -75,6 +99,9 @@
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register
+                                </button>
+                                <button type="reset" class="btn btn-default">
+                                    Reset
                                 </button>
                             </div>
                         </div>

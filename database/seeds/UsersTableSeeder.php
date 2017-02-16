@@ -28,7 +28,8 @@ class UsersTableSeeder extends Seeder
             if ($i === 1){
 
                 DB::table('users')->insert([
-                    'name' => 'Damian Wójcik',
+                    'firstName' => 'Damian',
+                    'lastName' => 'Wójcik',
                     'sex' => 'male',
                     'email' => 'khamian@gmail.com',
                     'password' => bcrypt($usersPassword),
@@ -43,19 +44,22 @@ class UsersTableSeeder extends Seeder
                 switch ($sex){
 
                     case 'male':
-                        $name = $faker->firstNameMale . ' ' . $faker->lastNameMale;
+                        $firstName = $faker->firstNameMale;
+                        $lastName = $faker->lastNameMale;
                         break;
 
                     case 'female':
-                        $name = $faker->firstNameFemale . ' ' . $faker->lastNameFemale;
+                        $firstName = $faker->firstNameFemale;
+                        $lastName = $faker->lastNameFemale;
                         break;
 
                 }
 
                 DB::table('users')->insert([
-                    'name' => $name,
+                    'firstName' => $firstName,
+                    'lastName' => $lastName,
                     'sex' => $sex,
-                    'email' => str_replace('-', '', str_slug($name)) . '@' . $faker->safeEmailDomain,
+                    'email' => $firstName . $lastName . '@' . $faker->safeEmailDomain,
                     'password' => bcrypt($usersPassword),
                     'created_at' => $date,
                     'updated_at' => $date

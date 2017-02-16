@@ -15,10 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('user/{id?}', function ($id = null) {
-    return 'user' . $id;
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('/users', 'UsersController', ['except' => ['index', 'create', 'store']]);

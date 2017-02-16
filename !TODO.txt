@@ -1,0 +1,2 @@
+- add birthday to register
+- at user view add user age(based on birthdate)
