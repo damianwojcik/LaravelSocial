@@ -5,7 +5,12 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Profile</div>
+                    <div class="panel-heading">
+                        Profile
+                        @if($user->id === Auth::id())
+                            <a href="{{ url('/users/' . $user->id . '/edit') }}" class="pull-right"><small>Edit</small></a>
+                        @endif
+                    </div>
 
                     <div class="panel-body text-center">
                         <h2><a href="{{ url('/users/' . $user->id) }}">{{ $user->firstName . ' ' . $user->lastName }}</a></h2>

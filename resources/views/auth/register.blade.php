@@ -9,7 +9,6 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
-
                         <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
                             <label for="firstName" class="col-md-4 control-label">First Name</label>
 
@@ -61,7 +60,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="sex" class="col-md-4 control-label">Płeć</label>
+                            <label for="sex" class="col-md-4 control-label">Sex:</label>
 
                             <div class="col-md-6">
                                 <label class="radio-inline">
