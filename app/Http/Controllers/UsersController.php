@@ -70,6 +70,15 @@ class UsersController extends Controller
         $user->lastName = $request->lastName;
         $user->sex = $request->sex;
         $user->email = $request->email;
+
+
+        if ($request->file('avatar')) {
+            $user_avatar_path = 'public/users/' . $id . '/avatars';
+            $upload_path = $request->file('avatar')->store($user_avatar_path);
+            $avatar_filename = str_replace($user_avatar_path . '/', '', $upload_path);
+            $user->avatar = $avatar_filename;
+        }
+
         $user->save();
 
         return back();
