@@ -13,14 +13,24 @@
 
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1">
-                                    <div class="form-group">
+                                    <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
                                         <label for="firstName">First Name:</label>
-                                        <input type="text" name="firstName" class="form-control" value="{{ $user->firstName }}" placeholder="First Name">
+                                        <input type="text" name="firstName" class="form-control" value="{{ $errors->has('firstName') ? old('firstName') : $user->firstName }}" placeholder="First Name">
+                                        @if ($errors->has('firstName'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('firstName') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
                                         <label for="lastName">Last Name:</label>
-                                        <input type="text" name="lastName" class="form-control" value="{{ $user->lastName }}" placeholder="Last Name">
+                                        <input type="text" name="lastName" class="form-control" value="{{ $errors->has('lastName') ? old('lastName') : $user->lastName }}" placeholder="Last Name">
+                                        @if ($errors->has('lastName'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('lastName') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
 
                                     <div class="form-group">
@@ -45,9 +55,15 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                                         <label for="email">E-mail Address:</label>
-                                        <input type="email" name="email" class="form-control" value="{{ $user->email }}" placeholder="E-mail">
+                                        <input type="email" name="email" class="form-control" value="{{ $errors->has('email') ? old('email') : $user->email }}" placeholder="E-mail">
+
+                                        @if ($errors->has('email'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
 
                                     <button type="submit" class="btn btn-primary pull-right">Save changes</button>

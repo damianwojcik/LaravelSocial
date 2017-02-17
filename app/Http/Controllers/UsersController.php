@@ -5,6 +5,8 @@ namespace LaravelSocial\Http\Controllers;
 use Illuminate\Http\Request;
 use LaravelSocial\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
@@ -51,6 +53,17 @@ class UsersController extends Controller
         if(intval($id) !== Auth::id()){
             abort(403, 'Access denied.');
         }
+
+        $this->validate($request, [
+            'firstName' => 'required|max:255',
+            'lastName' => 'required|max:255',
+            'sex' => 'required',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($id),
+            ]
+        ]);
 
         $user = User::findOrFail($id);
         $user->firstName = $request->firstName;
