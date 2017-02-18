@@ -46,9 +46,11 @@ class UsersTableSeeder extends Seeder
                     case 'male':
                         $firstName = $faker->firstNameMale;
                         $lastName = $faker->lastNameMale;
+                        $avatar_link = json_decode(file_get_contents('https://randomuser.me/api/?gender=male'))->results[0]->picture->large;
                         break;
 
                     case 'female':
+                        $avatar_link = json_decode(file_get_contents('https://randomuser.me/api/?gender=female'))->results[0]->picture->large;
                         $firstName = $faker->firstNameFemale;
                         $lastName = $faker->lastNameFemale;
                         break;
@@ -58,6 +60,7 @@ class UsersTableSeeder extends Seeder
                 DB::table('users')->insert([
                     'firstName' => $firstName,
                     'lastName' => $lastName,
+                    'avatar' => $avatar_link,
                     'sex' => $sex,
                     'email' => $firstName . $lastName . '@' . $faker->safeEmailDomain,
                     'password' => bcrypt($usersPassword),

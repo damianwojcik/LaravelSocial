@@ -1,2 +1,5 @@
 - add birthday to register
 - at user view add user age(based on birthdate)
+- system notification after success edit profile
+- save image in3 sizes
+- in edit profile automaticly change photo after upload

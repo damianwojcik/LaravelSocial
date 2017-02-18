@@ -13,6 +13,7 @@
                     </div>
 
                     <div class="panel-body text-center">
+                        <img class="img-responsive thumbnail" style="display: inline-block" src="{{ url('user-avatar/' . $user->id . '/250') }}" alt="{{ $user->firstName . ' ' . $user->lastName . ' Profile Picture' }}">
                         <h2><a href="{{ url('/users/' . $user->id) }}">{{ $user->firstName . ' ' . $user->lastName }}</a></h2>
                         <p>
                             @if ($user->sex == 'male')

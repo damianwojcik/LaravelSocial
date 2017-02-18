@@ -8,7 +8,7 @@
                     <div class="panel-heading">Edit profile</div>
                     <div class="panel-body">
 
-                        <img class="img-responsive" src="{{ asset('storage/users/' . $user->id . '/avatars/' . $user->avatar) }}" alt="{{ $user->firstName . ' ' . $user->lastName }}">
+                        <img class="img-responsive thumbnail" style="display: inline-block" src="{{ asset('storage/users/' . $user->id . '/avatars/' . $user->avatar) }}" alt="{{ $user->firstName . ' ' . $user->lastName . ' Profile Picture' }}">
                         
                         <form action="{{ url('/users/' . $user->id) }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
