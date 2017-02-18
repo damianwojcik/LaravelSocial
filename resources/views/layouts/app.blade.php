@@ -41,9 +41,21 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    
+                    @if (Auth::check())
+                        <form method="GET" action="{{ url('/search') }}" class="navbar-form navbar-left">
+                            <div class="input-group">
+                                <input type="text" name="q" class="form-control" placeholder="Serach LaravelSocial">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                                </span>
+                            </div>
+                        </form>
+                    @endif
+
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

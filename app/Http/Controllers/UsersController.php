@@ -3,6 +3,7 @@
 namespace LaravelSocial\Http\Controllers;
 
 use Illuminate\Http\Request;
+use LaravelSocial\Http\Middleware\CheckUsersPermission;
 use LaravelSocial\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -10,6 +11,11 @@ use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission', ['except' => ['show']]);
+    }
 
     /**
      * Display the specified resource.
@@ -32,10 +38,6 @@ class UsersController extends Controller
     public function edit($id)
     {
 
-        if(intval($id) !== Auth::id()){
-            abort(403, 'Access denied.');
-        }
-
         $user = Auth::user();
 
         return view('users.edit', compact('user'));
@@ -50,9 +52,6 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(intval($id) !== Auth::id()){
-            abort(403, 'Access denied.');
-        }
 
         $this->validate($request, [
             'firstName' => 'required|max:255',

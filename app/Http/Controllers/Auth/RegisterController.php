@@ -20,6 +20,7 @@ class RegisterController extends Controller
     |
     */
 
+
     use RegistersUsers;
 
     /**
@@ -71,4 +72,5 @@ class RegisterController extends Controller
             'sex' => $data['sex']
         ]);
     }
+
 }

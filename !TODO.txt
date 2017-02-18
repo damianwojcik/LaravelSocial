@@ -3,3 +3,6 @@
 - system notification after success edit profile
 - save image in3 sizes
 - in edit profile automaticly change photo after upload
+- add lightbox
+- wywalic autologowanie po rejestracji, link: http://kuvi.pl/kursy-do-nauki/197/kurs-laravel-serwis-spolecznosciowy/2135/10-middleware-uprawnien-dostepowych
+- wyszukiwanie dodać w query lastName
