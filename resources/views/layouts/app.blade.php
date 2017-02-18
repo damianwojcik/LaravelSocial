@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    
+
                     @if (Auth::check())
                         <form method="GET" action="{{ url('/search') }}" class="navbar-form navbar-left">
                             <div class="input-group">
