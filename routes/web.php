@@ -23,6 +23,9 @@ Route::get('/search', 'SearchController@users');
 
 Route::resource('/users', 'UsersController', ['except' => ['index', 'create', 'store']]);
 
-Route::resource('/friends', 'FriendsController', ['except' => ['show', 'create', 'edit']]);
-
 Route::get('/user-avatar/{id}/{size}', 'ImagesController@user_avatar');
+
+Route::get('/friends', 'FriendsController@index');
+Route::post('/friends/{friend}', 'FriendsController@add');
+Route::patch('/friends/{friend}', 'FriendsController@accept');
+Route::delete('/friends/{friend}', 'FriendsController@delete');

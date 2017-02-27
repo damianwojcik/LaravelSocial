@@ -6,3 +6,4 @@
 - add lightbox
 - wywalic autologowanie po rejestracji, link: http://kuvi.pl/kursy-do-nauki/197/kurs-laravel-serwis-spolecznosciowy/2135/10-middleware-uprawnien-dostepowych
 - wyszukiwanie dodać w query lastName
+! cofnięcie wysłania zaproszenia do znajomych

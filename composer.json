@@ -21,7 +21,10 @@
         ],
         "psr-4": {
             "LaravelSocial\\": "app/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
