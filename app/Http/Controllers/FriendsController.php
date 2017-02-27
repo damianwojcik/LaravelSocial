@@ -5,6 +5,7 @@ namespace LaravelSocial\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use LaravelSocial\Friend;
+use LaravelSocial\User;
 
 class FriendsController extends Controller
 {
@@ -13,9 +14,10 @@ class FriendsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        //
+        $friends = User::findOrFail($user_id)->friends();
+        return view('friends.index', compact('friends'));
     }
 
     /**

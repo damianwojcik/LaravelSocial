@@ -14,7 +14,7 @@ class SearchController extends Controller
         $search_phrase = Input::get('q');
         $search_results = User::where('firstName', 'like', '%' . $search_phrase . '%')->orWhere('lastName', 'like', '%' . $search_phrase . '%')->paginate(6);
         return view('search.users', compact('search_results', 'search_phrase'));
-        
+
     }
 
 }
