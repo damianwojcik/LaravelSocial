@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use LaravelSocial\Friend;
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,18 +15,18 @@ class UsersTableSeeder extends Seeder
     {
         $faker = Faker::create('pl_PL');
 
-        /*================ Constants ================*/
+        /*================ VARIABLES ================*/
 
         $usersCount = 20;
         $usersPassword = 'pass';
 
-        /*===========================================*/
+        /*================ USERS ================*/
 
-        for ($i = 1; $i<=$usersCount; $i++){
+        for ($user_id = 1; $user_id<=$usersCount; $user_id++){
 
             $date = $faker->dateTimeThisYear($max = 'now', $timezone = date_default_timezone_get());
 
-            if ($i === 1){
+            if ($user_id === 1){
 
                 DB::table('users')->insert([
                     'firstName' => 'Damian',
@@ -68,6 +69,32 @@ class UsersTableSeeder extends Seeder
                     'updated_at' => $date
                 ]);
 
+            }
+
+            /*================ FRIENDS ================*/
+
+            for ($i = 1; $i<= $faker->numberBetween($min = 0, $max = $usersCount-1); $i++){
+
+                $friend_id = $faker->numberBetween($min = 0, $max = $usersCount-1);
+
+                $friendship_exists = Friend::where([
+                    'user_id' => $user_id,
+                    'friend_id' => $friend_id,
+                ])->orWhere([
+                    'user_id' => $friend_id,
+                    'friend_id' => $user_id,
+                ])->exists();
+
+                if(!$friendship_exists) {
+
+                    DB::table('friends')->insert([
+                        'user_id' => $user_id,
+                        'friend_id' => $friend_id,
+                        'accepted' => 1,
+                        'created_at' => $faker->dateTimeThisYear($max = 'now')
+                    ]);
+
+                }
             }
 
         }
