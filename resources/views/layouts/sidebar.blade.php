@@ -21,6 +21,13 @@
                 {{ $user->email }}
             </p>
 
+            <p>
+                <a href="{{ url('/users/' . $user->id . '/friends') }}">
+                    <span class="label label-primary">{{ $user->friends()->count() }}</span>
+                    Friends
+                </a>
+            </p>
+
             @if(Auth::check() && $user->id !== Auth::id())
 
                 @if( !friendship($user->id)->exists && !has_friend_invite($user->id) )
